@@ -38,3 +38,5 @@ CREATE TABLE compras (
     FOREIGN KEY (id_cliente) REFERENCES clientes(id),
     FOREIGN KEY (id_produto) REFERENCES produtos(id)
 );
+
+INSERT INTO adms (nome, username, password) values ('Admin', 'admin', 'admin');
