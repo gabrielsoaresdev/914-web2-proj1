@@ -1,4 +1,3 @@
-drop DATABASE loja;
 CREATE DATABASE loja;
 USE loja;
 
