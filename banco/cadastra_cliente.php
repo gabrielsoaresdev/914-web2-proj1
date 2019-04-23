@@ -11,8 +11,7 @@ $senha = $_POST['senha'];
 $insert = "INSERT INTO clientes (nome, cpf, email, username, password) "
         . "values ('$nome', '$cpf', '$email', '$username', '$senha')";
 
-(new Conexao())->insert($insert);
+(new Conexao())->query($insert);
 
 
 header('location: ../index.php');
-//die('Não ignore meu cabeçalho...');

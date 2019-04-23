@@ -28,10 +28,16 @@ and open the template in the editor.
                     <h4>Vários produtos esperando por você!</h4>
                 </div>
             </div>
+            <?php
+                if(array_key_exists('erro', $_GET)) {
+                    echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
+                    . "Login e/ou senha incorretos!</div></div>";
+                }
+            ?>
             <div class="row">
                 <div class="col-sm card m-3">
                     <h3>Faça login e comece a comprar!</h3>
-                    <form id="form_login" action="script_login.php" method="POST" enctype="">
+                    <form id="form_login" action="banco/login_cliente.php" method="POST">
                         <div class="form-group">
                             <input class="form-control" type="text" name="login" placeholder="nome_de_usuario" required="">
                         </div>

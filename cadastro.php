@@ -17,7 +17,7 @@
             </div>
         </nav>
         
-        <form class="container my-5 py-5" action="dao/cadastra_cliente.php" method="POST">
+        <form class="container my-5 py-5" action="banco/cadastra_cliente.php" method="POST">
             <div class="form-group">
                 <label for="username">Digite o username:</label><br>
                 <input class="form-control" type="text" name="username" placeholder="Coloque o seu username aqui..." required="">
@@ -42,6 +42,7 @@
                 <label for="nome">Digite o seu nome:</label><br>
                 <input type="text" class="form-control" name="nome" placeholder="Digite a seu nome aqui..." required="">
             </div>
+            
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Cadastrar"/>
                 <a href="cadastro.php" class="btn btn-link">Já é cadastrado? Faça login!</a>

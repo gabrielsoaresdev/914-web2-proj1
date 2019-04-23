@@ -13,7 +13,7 @@ class Conexao {
         $this->conexao = mysqli_connect($host, $user, $password, $database);
     }
     
-    function insert($query) {
+    function query($query) {
         return mysqli_query($this->conexao, $query);
     }
 }

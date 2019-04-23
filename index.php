@@ -17,7 +17,7 @@
                
                 <div class="float-left dropdown">
                     <button id="btn-ola" class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Olá <?php echo "Gabriel!"?>
+                        Olá <?php echo $_GET['username']?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Editar Perfil</a>
@@ -27,7 +27,7 @@
             </div>
         </nav>
         
-                <footer class="fixed-bottom text-white text-center">
+        <footer class="fixed-bottom text-white text-center">
             Sunmarket &copy, 2019
         </footer>
         
@@ -36,7 +36,3 @@
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
-
-
-<?php
-header('Location: ./login.php');
