@@ -13,21 +13,11 @@
     <body>
         <nav class="navbar fixed-top">
             <div class="container-fluid">
-                <a href=""><img src="img/logo.svg"></a>
-               
-                <div class="float-left dropdown">
-                    <button id="btn-ola" class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Olá <?php echo "Gabriel!"?>
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
-                        <a class="dropdown-item" href="#">Sair</a>
-                    </div>
-                </div>
+                <a href="index.php"><img src="img/logo.svg"></a>
             </div>
         </nav>
         
-        <form class="container my-5 py-5">
+        <form class="container my-5 py-5" action="dao/cadastra_cliente.php" method="POST">
             <div class="form-group">
                 <label for="username">Digite o username:</label><br>
                 <input class="form-control" type="text" name="username" placeholder="Coloque o seu username aqui..." required="">
@@ -41,6 +31,11 @@
             <div class="form-group">
                 <label for="cpf">Digite o cpf (somente números):</label><br>
                 <input type="number" class="form-control" name="cpf" placeholder="Digite o cpf aqui..." required="">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Digite email:</label><br>
+                <input type="email" class="form-control" name="email" placeholder="Digite o email aqui..." required="">
             </div>
 
             <div class="form-group">
