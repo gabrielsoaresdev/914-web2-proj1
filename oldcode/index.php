@@ -17,11 +17,14 @@
                
                 <div class="float-left dropdown">
                     <button id="btn-ola" class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Olá <?php echo $_GET['username']?>
+                        Olá <?php
+                            if(array_key_exists("username", $_POST))
+                                echo $_POST['nome'];
+                        ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Editar Perfil</a>
-                        <a class="dropdown-item" href="#">Sair</a>
+                        <a class="dropdown-item" href="login.php">Sair</a>
                     </div>
                 </div>
             </div>

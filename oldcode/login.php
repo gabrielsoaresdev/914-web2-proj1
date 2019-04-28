@@ -53,8 +53,8 @@ and open the template in the editor.
                 
                 <div class="col-sm card m-3">
                     <h3>Cadastre-se para acessar!</h3>
-                    <a class="btn btn-primary my-3" href="#">Cadastre-se como cliente!</a>
-                    <a class="btn btn-primary my-3" href="#">Faça login como administrador!</a>
+                    <a class="btn btn-primary my-3" href="cadastro.php">Cadastre-se como cliente!</a>
+                    <a class="btn btn-primary my-3" href="login_adm.php">Faça login como administrador!</a>
                 </div>
             </div>
         </div>

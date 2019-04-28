@@ -45,7 +45,7 @@
             
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Cadastrar"/>
-                <a href="cadastro.php" class="btn btn-link">Já é cadastrado? Faça login!</a>
+                <a href="login.php" class="btn btn-link">Já é cadastrado? Faça login!</a>
             </div>
         </form>
         

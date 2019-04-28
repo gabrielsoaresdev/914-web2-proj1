@@ -1,6 +1,6 @@
 <?php 
 
-include('conexao.php');
+require_once 'conexao.php';
 
 $nome = $_POST['nome'];
 $cpf = $_POST['cpf'];
@@ -11,7 +11,7 @@ $senha = $_POST['senha'];
 $insert = "INSERT INTO clientes (nome, cpf, email, username, password) "
         . "values ('$nome', '$cpf', '$email', '$username', '$senha')";
 
-(new Conexao())->query($insert);
-
-
-header('location: ../index.php');
+if((new Conexao())->query($insert))
+    header('location: ../login.php');
+else
+    echo "Não foi possível cadastrar o cliente!";
