@@ -61,8 +61,8 @@
 </html>
 
 <?php
-    require_once 'Cliente.php';
-    require_once './banco/ClienteDAO.php';
+    require_once 'classes/Usuario.php';
+    require_once './banco/UsuarioDAO.php';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = $_POST['nome'];
@@ -70,7 +70,7 @@
         $email = $_POST['email'];
         $username = $_POST['username'];
         $password = $_POST['password'];
-        (new ClienteDAO())->insertCliente(new Cliente(0, $nome, $cpf, $email, $username, $password));
+        (new UsuarioDAO())->insertUsuario(new Usuario(0, $nome, $cpf, $email, $username, $password, false));
         header('location: entrar.php');
     }
 ?>

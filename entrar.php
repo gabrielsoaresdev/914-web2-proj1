@@ -30,8 +30,12 @@
             </div>
             <?php
                 if(array_key_exists('erro', $_GET)) {
-                    echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
-                    . "Login e/ou senha incorretos!</div></div>";
+                    if($_GET['erro'] == 1)
+                        echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
+                            . "Login e/ou senha incorretos!</div></div>";
+                    else if($_GET['erro'] == 2)
+                        echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
+                            . "Acesso negado!</div></div>";
                 }
             ?>
             <div class="row">
@@ -44,18 +48,11 @@
                         <div class="form-group">
                             <input type="password" class="form-control" name="senha" placeholder="Digite a senha aqui..." required="">
                         </div>
-                        <input type="text" name="is_cliente" value="true" hidden="">
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Entrar"/>
                             <a href="cadastro.php" class="btn btn-link">Não é cadastrado? Clique Aqui!</a>
                         </div>
                     </form>
-                </div>
-                
-                <div class="col-sm card m-3">
-                    <h3>Cadastre-se para acessar!</h3>
-                    <a class="btn btn-primary my-3" href="cadastro.php">Cadastre-se como cliente!</a>
-                    <a class="btn btn-primary my-3" href="login_adm.php">Faça login como administrador!</a>
                 </div>
             </div>
         </div>

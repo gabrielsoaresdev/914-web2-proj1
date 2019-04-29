@@ -1,11 +1,12 @@
 <?php
-    require_once './banco/ClienteDAO.php';
-
+    require_once './banco/UsuarioDAO.php';
+    require_once './classes/Usuario.php';
+    
     session_start();
     if(!$_SESSION['logado'])
         header('location: ./entrar.php');
     else
-        $cliente = (new ClienteDAO())->selectClienteByUsername($_SESSION['username']);
+        $cliente = (new UsuarioDAO())->selectUsuarioByUsername($_SESSION['username']);
 ?>
 
 <!DOCTYPE html>

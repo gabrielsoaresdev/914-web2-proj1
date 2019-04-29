@@ -1,13 +1,15 @@
+drop DATABASE loja;
 CREATE DATABASE loja;
 USE loja;
 
-CREATE TABLE adms (
+CREATE TABLE usuarios (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(120),
     cpf INT UNIQUE KEY,
     email VARCHAR(120) UNIQUE KEY,
     username VARCHAR(120) UNIQUE KEY,
-    password VARCHAR(120)
+    password VARCHAR(120),
+    is_admin BOOLEAN
 );
 
 CREATE TABLE produtos (
@@ -19,24 +21,15 @@ CREATE TABLE produtos (
     quantidade INT,
     categoria INT,
     id_adm INT,
-    FOREIGN KEY (id_adm) REFERENCES adms(id)
-);
-
-CREATE TABLE clientes (
-    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    nome VARCHAR(120),
-    cpf INT UNIQUE KEY,
-    email VARCHAR(120) UNIQUE KEY,
-    username VARCHAR(120) UNIQUE KEY,
-    password VARCHAR(120)
+    FOREIGN KEY (id_adm) REFERENCES usuarios(id)
 );
 
 CREATE TABLE compras (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_cliente INT,
     id_produto INT,
-    FOREIGN KEY (id_cliente) REFERENCES clientes(id),
+    FOREIGN KEY (id_cliente) REFERENCES usuarios(id),
     FOREIGN KEY (id_produto) REFERENCES produtos(id)
 );
 
-INSERT INTO adms (nome, username, password) values ('Admin', 'admin', 'admin');
+INSERT INTO usuarios (nome, username, password, is_admin) values ('Administrador', 'admin', 'admin', true);

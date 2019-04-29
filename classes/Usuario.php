@@ -1,20 +1,22 @@
 <?php
     
-class Cliente {
+class Usuario {
     private $id;
     private $nome;
     private $cpf;
     private $email;
     private $username;
     private $password;
+    private $isAdmin;
     
-    function __construct($id, $nome, $cpf, $email, $username, $password) {
+    function __construct($id, $nome, $cpf, $email, $username, $password, $isAdmin) {
         $this->id = $id;
         $this->nome = $nome;
         $this->cpf = $cpf;
         $this->email = $email;
         $this->username = $username;
         $this->password = $password;
+        $this->isAdmin = $isAdmin;
     }
 
     function compararPassword($password) : bool{
@@ -72,5 +74,13 @@ class Cliente {
         } else {
             return false;
         }
+    }
+    
+    function isAdmin() {
+        return $this->isAdmin;
+    }
+
+    function setIsAdmin($isAdmin) {
+        $this->isAdmin = $isAdmin;
     }
 }
