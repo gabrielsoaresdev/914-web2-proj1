@@ -1,6 +1,6 @@
 <?php
-    require_once '../banco/UsuarioDAO.php';
-    require_once '../classes/Usuario.php';
+    require_once 'banco/UsuarioDAO.php';
+    require_once 'classes/Usuario.php';
         
     session_start();
     if(!$_SESSION['logado'] || !$_SESSION['is_admin'])

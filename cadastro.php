@@ -62,7 +62,7 @@
 
 <?php
     require_once 'classes/Usuario.php';
-    require_once './banco/UsuarioDAO.php';
+    require_once 'banco/UsuarioDAO.php';
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $nome = $_POST['nome'];
