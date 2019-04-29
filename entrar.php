@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <?php
     session_start();
-    if($_SESSION['username']) {
-        $_SESSION['username'] = false;
-    }
+    $_SESSION['logado'] = false;
 ?>
 
 <html lang="pt-br">
@@ -46,7 +44,7 @@
                         <div class="form-group">
                             <input type="password" class="form-control" name="senha" placeholder="Digite a senha aqui..." required="">
                         </div>
-                        <input type="text" name="is_cliente" values="true" hidden="">
+                        <input type="text" name="is_cliente" value="true" hidden="">
                         <div class="form-group">
                             <input type="submit" class="btn btn-primary" value="Entrar"/>
                             <a href="cadastro.php" class="btn btn-link">Não é cadastrado? Clique Aqui!</a>

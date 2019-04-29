@@ -1,10 +1,11 @@
 <?php
-    require_once '../banco/ClienteDAO';
+    require_once './banco/ClienteDAO.php';
 
     session_start();
-    if(!$_SESSION[$_POST['username']])
-        header('entrar.php');
-    $cliente = (new ClienteDAO())->selectClienteByUsername($_POST['username']);
+    if(!$_SESSION['logado'])
+        header('location: ./entrar.php');
+    else
+        $cliente = (new ClienteDAO())->selectClienteByUsername($_SESSION['username']);
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +33,7 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Editar Perfil</a>
-                        <a class="dropdown-item" href="login.php">Sair</a>
+                        <a class="dropdown-item" href="script_deslogar.php">Sair</a>
                     </div>
                 </div>
             </div>

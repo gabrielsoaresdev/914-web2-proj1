@@ -1,5 +1,5 @@
 <?php
-require_once '/Cliente.php';
+require_once 'Cliente.php';
 require_once 'Conexao.php';
 
 class ClienteDAO {
@@ -11,7 +11,7 @@ class ClienteDAO {
     
     function selectClienteByUsername($username) : Cliente {
         $select = "SELECT * FROM clientes WHERE username = '$username'";
-        $result = $this->conexao->query(select);
+        $result = $this->conexao->query($select);
         if($result) {
             $result = mysqli_fetch_assoc($result);
             $id = $result['id'];
@@ -39,7 +39,7 @@ class ClienteDAO {
             . " '".$cliente->getEmail()."', '".$cliente->getUsername()."',"
             . " '".$cliente->getPassword()."')";
         
-        return $conexao->query($insert);
+        return $this->conexao->query($insert);
     }
     
     function updateCliente(Cliente $cliente) {
