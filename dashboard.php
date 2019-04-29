@@ -24,7 +24,7 @@
         <title>Cadastre-se</title>
     </head>
     <body>
-        <nav class="navbar fixed-top">
+        <nav class="navbar">
             <div class="container-fluid">
                 <a href="#">
                     <img src="img/logo.svg">
@@ -44,6 +44,24 @@
                 </div>
             </div>
         </nav>
+        
+        <div>
+            <div class="card p-3" style="display: block;">
+                <a href="./cadastro_produto.php" class="btn btn-primary">Add Produto</a>
+                <a href="./cadastro_admin.php" class="btn btn-primary">Add Administrador</a>
+            </div>
+            
+            <div class="row">
+                <div class="container-fluid">
+                    <div class="row"></div>
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        
             
         <footer class="fixed-bottom text-white text-center">
             Sunmarket &copy, 2019

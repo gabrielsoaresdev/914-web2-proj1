@@ -42,7 +42,8 @@ class UsuarioDAO {
         $insert = "INSERT INTO usuarios (nome, cpf, email, username, password, is_admin) "
             . "values ('".$usuario->getNome()."', '".$usuario->getCpf()."',"
             . " '".$usuario->getEmail()."', '".$usuario->getUsername()."',"
-            . " '".$usuario->getPassword()."', false)";
+            . " '".$usuario->getPassword()."', '"
+            .($usuario->isAdmin() ? 1 : 0)."')";
         
         return $this->conexao->query($insert);
     }
@@ -57,5 +58,3 @@ class UsuarioDAO {
     }
     
 }
-
-?>

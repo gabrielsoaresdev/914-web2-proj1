@@ -61,16 +61,18 @@
 </html>
 
 <?php
-    require_once 'classes/Usuario.php';
-    require_once 'banco/UsuarioDAO.php';
+require_once 'classes/Usuario.php';
+require_once 'banco/UsuarioDAO.php';
 
-    if($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $nome = $_POST['nome'];
-        $cpf = $_POST['cpf'];
-        $email = $_POST['email'];
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        (new UsuarioDAO())->insertUsuario(new Usuario(0, $nome, $cpf, $email, $username, $password, false));
-        header('location: entrar.php');
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $cpf = $_POST['cpf'];
+    $email = $_POST['email'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    if (!(new UsuarioDAO())->insertUsuario(new Usuario(0, $nome, $cpf, $email, $username, $password, false))) {
+        echo "ERRO! Não foi possível inserir! Talvez um usuário com esses dados esteja cadastrado.";
+    } else {
+        header('Location: ./entrar.php');
     }
-?>
+}
