@@ -10,8 +10,12 @@ if (!$_SESSION['logado']) {
     header('location: ./entrar.php');
 } else {
     $cliente = (new UsuarioDAO())->selectUsuarioByUsername($_SESSION['username']);
-    if($cliente->isAdmin())
-        header('location: ./dashboard.php');
+}
+
+if (array_key_exists("id", $_GET)) {
+    $produto = (new ProdutoDAO())->selectProdutoById($_GET['id']);
+} else {
+    header('Location: ./index.php?erro=3');
 }
 ?>
 
@@ -29,25 +33,16 @@ if (!$_SESSION['logado']) {
         
         <style>
             .objectImage {
-                width: 90%;
                 object-fit: cover;
-                object-position: center;
-            }
-            .produto {
-                width: 20%;
-                display: inline-block;
-            }
-            .produto:hover {
-                background: lightgray;
-                text-decoration: none;
-                cursor: pointer;
+                width: 100%;
             }
         </style>
+        
     </head>
     <body>
         <nav class="navbar">
             <div class="container-fluid">
-                <a href=""><img src="img/logo.svg"></a>
+                <a href="./index.php"><img src="img/logo.svg"></a>
                
                 <div class="float-left dropdown">
                     <button id="btn-ola" class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,24 +58,22 @@ if (!$_SESSION['logado']) {
             </div>
         </nav>
         
-        <div class="container p-3">
-            <form class="row form-group">
-                <input class="col form-control" type="text" placeholder="Busque aqui...">
-                <input class="col-auto btn btn-warning" type="submit" value="Pesquisar"></button>
-            </form>
-            <?php
-                $produtos = (new ProdutoDAO())->selectAll();
-                
-                foreach($produtos as $produto) {
-                    echo "<div onclick=\"location.replace('produto.php?id=".$produto->getId()
-                        ."')\" class=\"card container produto m-1\"><div class=\"imagem\">"
-                        ."<img class=\"objectImage\" src=\"".$produto->getImagemUrl()."\">"
-                        ."</div><div class=\"row h5\">".$produto->getNome()."</div>"
-                        ."<div class=\"row h6 font-weight-bold text-success\">R$ ".
-                        $produto->getPreco()."</div></div>";
-                }
-                
-            ?>
+        <div class="container-fluid p-5">
+            
+            <div class="row">
+                <div class="col-4 imagem">
+                    <img class="objectImage" src="<?php echo $produto->getImagemUrl();?>">
+                </div>
+
+                <div class="col">
+                    <div class="h4"><?php echo $produto->getNome();?></div>
+                    <div class="text-justify"><?php echo $produto->getDescricao();?></div><br><br>
+                    <div class="font-weight-bolder">Quantidade: <?php echo $produto->getQuantidade();?> unidades</div>
+                    <div class="text-success">Preço: R$ <?php echo $produto->getPreco()?></div>
+                    
+                    <a class="btn btn-warning">Adicione já ao carrinho!</a>
+                </div>
+            </div>
         </div>
         
         <footer class="fixed-bottom text-white text-center">

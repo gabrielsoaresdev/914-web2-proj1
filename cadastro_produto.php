@@ -44,10 +44,10 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
             </div>
         </nav>
             
-        <form class="container py-3">
+        <form class="container py-3" action="./cadastro_produto.php" method="POST" enctype="multipart/form-data">
             <h3 class="row"> Cadastrar Produto </h3>
             <div class="row form-group">
-                <input class="form-control" type="text" name="nome" placeholder="Coloque o seu nome aqui..." required="">
+                <input class="form-control" type="text" name="nome" placeholder="Coloque nome do produto aqui..." required="">
             </div>
             
             <div class="row form-group">
@@ -55,12 +55,12 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
             </div>
 
             <div class="row form-group custom-file">
-                <input type="file" class="custom-file-input" name="imagem" id="validatedCustomFile" required>
-                <label class="custom-file-label" for="imagem">Adicione sua imagem aqui...</label>
+                <input type="file" class="custom-file-input" name="arquivo" required>
+                <label class="custom-file-label" for="arquivo">Adicione sua imagem aqui...</label>
             </div>
 
             <div class="row form-group">
-                <input type="number" class="form-control" name="preco" placeholder="Digite o preco aqui..." required="">
+                <input type="tel" class="form-control" name="preco" placeholder="Digite o preco aqui..." required="">
             </div>
 
             <div class="row form-group">
@@ -101,3 +101,29 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
         <script src="js/bootstrap.min.js"></script>
     </body>
 </html>
+
+<?php
+
+require_once './banco/ProdutoDAO.php';
+require_once './classes/Produto.php';
+
+if($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $nome = $_POST['nome'];
+    $descricao = $_POST['descricao'];
+    $preco = $_POST['preco'];
+    $quantidade = $_POST['quantidade'];
+    $idCategoria = $_POST['categoria'];
+    
+    $imagemTmp = $_FILES['arquivo']['tmp_name'];
+    $destino = "./img/produtos/"
+            .$idCategoria.$nome.$admin->getId().$_FILES['arquivo']['name'];
+    
+    
+    if (!(new ProdutoDAO())->insertProduto(new Produto(0, $nome, $descricao,
+            $destino, $preco, $quantidade, $idCategoria, $admin->getId()))) {
+        echo "ERRO! Não foi possível inserir!";
+    } else {
+        move_uploaded_file($imagemTmp, $destino);
+        header('Location: ./dashboard.php');
+    }
+}
