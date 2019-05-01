@@ -1,12 +1,16 @@
 <?php
-    require_once './banco/UsuarioDAO.php';
-    require_once './classes/Usuario.php';
-    
-    session_start();
-    if(!$_SESSION['logado'])
-        header('location: ./entrar.php');
-    else
-        $cliente = (new UsuarioDAO())->selectUsuarioByUsername($_SESSION['username']);
+require_once './banco/UsuarioDAO.php';
+require_once './banco/ProdutoDAO.php';
+require_once './classes/Produto.php';
+require_once './classes/Usuario.php';
+
+
+session_start();
+if (!$_SESSION['logado']) {
+    header('location: ./entrar.php');
+} else {
+    $cliente = (new UsuarioDAO())->selectUsuarioByUsername($_SESSION['username']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -39,6 +43,12 @@
                 </div>
             </div>
         </nav>
+        
+        <div class="container">
+            <?php
+                (new ProdutoDAO())->selectAllProdutos();
+            ?>
+        </div>
         
         <footer class="fixed-bottom text-white text-center">
             Sunmarket &copy, 2019

@@ -1,4 +1,4 @@
-drop DATABASE loja;
+DROP DATABASE IF EXISTS loja;
 CREATE DATABASE loja;
 USE loja;
 
@@ -12,6 +12,11 @@ CREATE TABLE usuarios (
     is_admin BOOLEAN
 );
 
+CREATE TABLE categorias (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    nome VARCHAR(120)
+);
+
 CREATE TABLE produtos (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(120),
@@ -19,13 +24,16 @@ CREATE TABLE produtos (
     imagem_url VARCHAR(300),
     preco DECIMAL(7,2),
     quantidade INT,
-    categoria INT,
+    id_categoria INT,
     id_adm INT,
-    FOREIGN KEY (id_adm) REFERENCES usuarios(id)
+    FOREIGN KEY (id_adm) REFERENCES usuarios(id),
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
 
-CREATE TABLE compras (
+CREATE TABLE produtos_comprados (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    quantidade INT,
+    comprado BOOLEAN,
     id_cliente INT,
     id_produto INT,
     FOREIGN KEY (id_cliente) REFERENCES usuarios(id),

@@ -49,6 +49,7 @@
             <div class="card p-3" style="display: block;">
                 <a href="./cadastro_produto.php" class="btn btn-primary">Add Produto</a>
                 <a href="./cadastro_admin.php" class="btn btn-primary">Add Administrador</a>
+                <a href="./cadastro_categoria.php" class="btn btn-primary">Add Categoria</a>
             </div>
             
             <div class="row">

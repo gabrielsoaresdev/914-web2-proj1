@@ -45,20 +45,13 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
         </nav>
             
         <form class="container py-3">
-            <div class="row">
-                <div class="col-sm card text-danger">
-                    A pessoa que você irá cadastrar terá privilégios de administrador!
-                </div>
-            </div>
-                
-       
             <h3 class="row"> Cadastrar Produto </h3>
             <div class="row form-group">
                 <input class="form-control" type="text" name="nome" placeholder="Coloque o seu nome aqui..." required="">
             </div>
-
+            
             <div class="row form-group">
-                <input type="descricao" class="form-control" name="descricao" placeholder="Digite sua descrição aqui..." required="">
+                <textarea class="form-control" rows="5" name="descricao" id="comment"></textarea>
             </div>
 
             <div class="row form-group custom-file">
@@ -77,11 +70,19 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
             <div class="row form-group">
                 <label for="nome">Selecione a categoria:</label><br>
                 <select name="categoria" class="form-control">
-                    <option value="eletronicos">Eletrônicos</option>
-                    <option value="cama">Cama</option>
-                    <option value="mesa">Mesa</option>
-                    <option value="banho">Banho</option>
-                    <option value="outros">Outros</option>
+                    <?php
+                        require_once './classes/Categoria.php';
+                        require_once './banco/CategoriaDAO.php';
+                    
+                        $categorias = (new CategoriaDAO())->selectAll();
+                        if($categorias == null) {
+                            header('Location: ./cadastro_categoria.php?erro=1');
+                        }
+                        foreach ($categorias as $categoria) {
+                            echo "<option value=\"".$categoria->getId()
+                                ."\">".$categoria->getNome()."</option>";
+                        }
+                    ?>
                 </select>
             </div>
 
@@ -89,7 +90,6 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
                 <input type="submit" class="btn btn-primary" value="Cadastrar"/>
             </div>
         </form>
-            
             
             
         <footer class="fixed-bottom text-white text-center bg-primary">

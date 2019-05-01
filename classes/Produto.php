@@ -12,17 +12,17 @@ class Produto {
     private $imagemUrl;
     private $preco;
     private $quantidade;
-    private $categoria;
+    private $idCategoria;
     private $idAdm;
     
-    function __construct($id, $nome, $descricao, $imagemUrl, $preco, $quantidade, $categoria, $idAdm) {
+    function __construct($id, $nome, $descricao, $imagemUrl, $preco, $quantidade, $idCategoria, $idAdm) {
         $this->id = $id;
         $this->nome = $nome;
         $this->descricao = $descricao;
         $this->imagemUrl = $imagemUrl;
         $this->preco = $preco;
         $this->quantidade = $quantidade;
-        $this->categoria = $categoria;
+        $this->idCategoria = $idCategoria;
         $this->idAdm = $idAdm;
     }
 
@@ -49,10 +49,6 @@ class Produto {
 
     function getQuantidade() {
         return $this->quantidade;
-    }
-
-    function getCategoria() {
-        return $this->categoria;
     }
 
     function getIdAdm() {
@@ -82,14 +78,16 @@ class Produto {
     function setQuantidade($quantidade) {
         $this->quantidade = $quantidade;
     }
-
-    function setCategoria($categoria) {
-        $this->categoria = $categoria;
-    }
-
+    
     function setIdAdm($idAdm) {
         $this->idAdm = $idAdm;
     }
 
+    function getIdCategoria() {
+        return $this->idCategoria;
+    }
 
+    function setIdCategoria($idCategoria) {
+        $this->idCategoria = $idCategoria;
+    }
 }
