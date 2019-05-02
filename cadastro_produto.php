@@ -37,7 +37,6 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
                         ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
                         <a class="dropdown-item" href="script_deslogar.php">Sair</a>
                     </div>
                 </div>
@@ -78,11 +77,11 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
                         if($categorias == null) {
                             header('Location: ./cadastro_categoria.php?erro=1');
                         }
-                        foreach ($categorias as $categoria) {
-                            echo "<option value=\"".$categoria->getId()
-                                ."\">".$categoria->getNome()."</option>";
-                        }
-                    ?>
+                        foreach ($categorias as $categoria) { ?>
+                            <option value="<?php echo $categoria->getId(); ?>">
+                                <?php echo $categoria->getId(); ?>
+                            </option>
+                    <?php } ?>
                 </select>
             </div>
 

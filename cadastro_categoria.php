@@ -47,9 +47,13 @@
         <form class="container py-3" action="cadastro_categoria.php" method="POST">
             <?php
                 if(array_key_exists("erro", $_GET)) {
-                    if($_GET['erro'] == 1) {
-                        echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
-                            . "Você precisa primeiro adicionar uma categoria!</div></div>";
+                    if($_GET['erro'] == 1) { ?>
+                        <div class="row">
+                            <div class="col-sm card m-3 text-danger">
+                                "Você precisa primeiro adicionar uma categoria!
+                            </div>
+                        </div>
+            <?php
                     }
                 }
             ?>

@@ -30,10 +30,19 @@ CREATE TABLE produtos (
     FOREIGN KEY (id_categoria) REFERENCES categorias(id)
 );
 
-CREATE TABLE produtos_comprados (
+CREATE TABLE produto_do_carrinho (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quantidade INT,
-    comprado BOOLEAN,
+    id_cliente INT,
+    id_produto INT,
+    FOREIGN KEY (id_cliente) REFERENCES usuarios(id),
+    FOREIGN KEY (id_produto) REFERENCES produtos(id)
+);
+
+CREATE TABLE produto_comprado (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    quantidade INT,
+    data_compra DATE,
     id_cliente INT,
     id_produto INT,
     FOREIGN KEY (id_cliente) REFERENCES usuarios(id),

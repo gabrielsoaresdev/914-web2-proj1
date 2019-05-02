@@ -30,12 +30,21 @@
             </div>
             <?php
                 if(array_key_exists('erro', $_GET)) {
-                    if($_GET['erro'] == 1)
-                        echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
-                            . "Login e/ou senha incorretos!</div></div>";
-                    else if($_GET['erro'] == 2)
-                        echo "<div class=\"row\"><div class=\"col-sm card m-3 text-danger\">"
-                            . "Acesso negado!</div></div>";
+                    if($_GET['erro'] == 1) { ?>
+                    <div class="row">
+                        <div class="col-sm card m-3 text-danger">
+                            Login e/ou senha incorretos!
+                        </div>
+                    </div>
+                    <?php
+                    } else if($_GET['erro'] == 2) { ?>
+                    <div class="row">
+                        <div class="col-sm card m-3 text-danger">
+                            Acesso negado!
+                        </div>
+                    </div>
+                    <?php
+                    }
                 }
             ?>
             <div class="row">

@@ -10,16 +10,6 @@ class ProdutoDAO {
         $this->conexao = new Conexao();
     }
     
-//    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-//    nome VARCHAR(120),
-//    descricao TEXT,
-//    imagem_url VARCHAR(300),
-//    preco DECIMAL(7,2),
-//    quantidade INT,
-//    categoria INT,
-//    id_adm INT,
-//    FOREIGN KEY (id_adm) REFERENCES usuarios(id)
-    
     function selectAll() {
         $select = "SELECT * FROM PRODUTOS ORDER BY nome";
         
@@ -54,6 +44,43 @@ class ProdutoDAO {
             $result['id_categoria'], $result['id_adm']);
         
         return $produto;
+    }
+    
+    function findProdutosByNome($termoDeBusca) {
+        $select = "SELECT * FROM PRODUTOS WHERE nome like '%".$termoDeBusca."%'";
+        $produtos = null;
+        $result = $this->conexao->query($select);
+        while($row = mysqli_fetch_assoc($result)) {
+            $produtos[] = new Produto($row['id'], $row['nome'], $row['descricao'],
+                    $row['imagem_url'], $row['preco'], $row['quantidade'],
+                    $row['id_categoria'], $row['id_adm']);
+        }
+        return $produtos;
+    }
+    
+    function findProdutosByCategoria($idCategoria) {
+        $select = "SELECT * FROM PRODUTOS WHERE id_categoria = ".$idCategoria;
+        $produtos = null;
+        $result = $this->conexao->query($select);
+        while($row = mysqli_fetch_assoc($result)) {
+            $produtos[] = new Produto($row['id'], $row['nome'], $row['descricao'],
+                    $row['imagem_url'], $row['preco'], $row['quantidade'],
+                    $row['id_categoria'], $row['id_adm']);
+        }
+        return $produtos;
+    }
+    
+    function findProdutosByCategoriaAndNome($idCategoria, $termoDeBusca) {
+        $select = "SELECT * FROM PRODUTOS WHERE nome like '%".$termoDeBusca."%' "
+                . "and id_categoria=" . $idCategoria;
+        $produtos = null;
+        $result = $this->conexao->query($select);
+        while($row = mysqli_fetch_assoc($result)) {
+            $produtos[] = new Produto($row['id'], $row['nome'], $row['descricao'],
+                    $row['imagem_url'], $row['preco'], $row['quantidade'],
+                    $row['id_categoria'], $row['id_adm']);
+        }
+        return $produtos;
     }
     
     function insertProduto(Produto $produto) {

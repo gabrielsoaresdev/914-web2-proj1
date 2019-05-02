@@ -38,7 +38,6 @@
                         ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Editar Perfil</a>
                         <a class="dropdown-item" href="script_deslogar.php">Sair</a>
                     </div>
                 </div>
