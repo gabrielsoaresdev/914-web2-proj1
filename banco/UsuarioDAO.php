@@ -47,14 +47,4 @@ class UsuarioDAO {
         
         return $this->conexao->query($insert);
     }
-    
-    function updateUsuario(Usuario $usuario) {
-        $update = "UPDATE usuarios SET nome='".$usuario->getNome()."', "
-            . "SET cpf='".$usuario->getCpf()."', email='".$usuario->getEmail()."', "
-            . "username='".$usuario->getUsername()."', password='".$usuario->getPassword()."', "
-            . "WHERE id=" . $usuario->getId();
-        
-        return $this->conexao->query($update);
-    }
-    
 }

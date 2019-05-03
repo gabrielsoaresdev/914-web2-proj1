@@ -42,7 +42,7 @@ CREATE TABLE produto_do_carrinho (
 CREATE TABLE pedido (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     data_compra DATE,
-    status VARCHAR(90),
+    status INT,
     id_cliente INT,
     FOREIGN KEY (id_cliente) REFERENCES usuarios(id)
 );
