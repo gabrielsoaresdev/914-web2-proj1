@@ -107,7 +107,7 @@ require_once 'classes/Produto.php';
         else {
             foreach($produtos as $produto) {
     ?>
-    <div onclick="location.replace('produto.php?id=<?php echo $produto->getId(); ?>')" class="card container produto m-1">
+    <div onclick="location.replace('produto.php?id=<?php echo $produto->getId(); ?>')" class="card container produto m-4">
         <div class="imagem">
             <img class="objectImage" src="<?php echo $produto->getImagemUrl(); ?>">
         </div>
