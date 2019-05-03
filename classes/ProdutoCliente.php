@@ -3,13 +3,11 @@
 abstract class ProdutoCliente {
     private $id;
     private $quantidade;
-    private $idCliente;
     private $idProduto;
     
-    function __construct($id, $quantidade, $idCliente, $idProduto) {
+    function __construct($id, $quantidade, $idProduto) {
         $this->id = $id;
         $this->quantidade = $quantidade;
-        $this->idCliente = $idCliente;
         $this->idProduto = $idProduto;
     }
 
@@ -19,10 +17,6 @@ abstract class ProdutoCliente {
 
     function getQuantidade() {
         return $this->quantidade;
-    }
-
-    function getIdCliente() {
-        return $this->idCliente;
     }
 
     function getIdProduto() {
@@ -37,21 +31,21 @@ abstract class ProdutoCliente {
         $this->quantidade = $quantidade;
     }
 
-    function setIdCliente($idCliente) {
-        $this->idCliente = $idCliente;
-    }
-
     function setIdProduto($idProduto) {
         $this->idProduto = $idProduto;
     }
 }
 
 class ProdutoComprado extends ProdutoCliente {
+    private $idPedido;
     private $dataCompra;
+    private $status;
     
-    function __construct($id, $quantidade, $idCliente, $idProduto, $dataCompra) {
-        parent::__construct($id, $quantidade, $idCliente, $idProduto);
+    function __construct($id, $quantidade, $idProduto, $idPedido, $dataCompra, $status) {
+        parent::__construct($id, $quantidade, $idProduto);
         $this->dataCompra = $dataCompra;
+        $this->status = $status;
+        $this->idPedido = $idPedido;
     }
 
     function getDataCompra() {
@@ -61,9 +55,37 @@ class ProdutoComprado extends ProdutoCliente {
     function setDataCompra($dataCompra) {
         $this->dataCompra = $dataCompra;
     }
+    
+    function getStatus() {
+        return $this->status;
+    }
+
+    function setStatus($status) {
+        $this->status = $status;
+    }
+    
+    function getIdPedido() {
+        return $this->idPedido;
+    }
+
+    function setIdPedido($idPedido) {
+        $this->idPedido = $idPedido;
+    }
 }
 
 class ProdutoCarrinho extends ProdutoCliente {
+    private $idCliente;
     
-}
+    function __construct($id, $quantidade, $idProduto, $idCliente) {
+        parent::__construct($id, $quantidade, $idProduto);
+        $this->idCliente = $idCliente;
+    }
+    
+    function getIdCliente() {
+        return $this->idCliente;
+    }
 
+    function setIdCliente($idCliente) {
+        $this->idCliente = $idCliente;
+    }
+}

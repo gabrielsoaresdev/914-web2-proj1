@@ -71,7 +71,13 @@ if (array_key_exists("id", $_GET)) {
                     <div class="font-weight-bolder">Quantidade: <?php echo $produto->getQuantidade();?> unidades</div>
                     <div class="text-success">Preço: R$ <?php echo $produto->getPreco()?></div>
                     
-                    <a class="btn btn-warning">Adicione já ao carrinho!</a>
+                    
+                    <form class="form-group" method="POST" action="script_add_carrinho.php">
+                        <input name="quantidade" placeholder="Digite a quantidade..." type="number" class="form-control col-auto my-1" max="<?php echo $produto->getQuantidade();?>" min="0">
+                        <input name="id_cliente" hidden="" value="<?php echo $cliente->getId(); ?>">
+                        <input name="id_produto" hidden="" value="<?php echo $produto->getId(); ?>">
+                        <input type="submit" class="btn btn-warning" value="Adicione já ao carrinho!">
+                    </form>
                 </div>
             </div>
         </div>

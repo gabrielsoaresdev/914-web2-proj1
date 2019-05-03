@@ -56,7 +56,8 @@ if (!$_SESSION['logado']) {
                         ?>
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Carrinho</a>
+                        <a class="dropdown-item" href="carrinho.php">Carrinho</a>
+                        <a class="dropdown-item" href="pedidos.php">Pedidos</a>
                         <a class="dropdown-item" href="script_deslogar.php">Sair</a>
                     </div>
                 </div>
@@ -96,25 +97,26 @@ if (!$_SESSION['logado']) {
                     require_once './classes/Categoria.php';
                 
                     $categorias = (new CategoriaDAO())->selectAll();
-                    
-                    foreach ($categorias as $categoria) {
+                    if($categorias <> null) {
+                        foreach ($categorias as $categoria) {
                 ?>
                 
                 <?php
-                    $class = "btn-warning";
-                    $id_cat = "?id_cat=" . $categoria->getId() . "&q=$q";
-                    if(array_key_exists("id_cat", $_GET)) {
-                        if($_GET['id_cat'] == $categoria->getId()) {
-                            $class = "btn-white text-warning";
-                            $id_cat = "?q=$q";
-                        }
-                    }
+                            $class = "btn-warning";
+                            $id_cat = "?id_cat=" . $categoria->getId() . "&q=$q";
+                            if(array_key_exists("id_cat", $_GET)) {
+                                if($_GET['id_cat'] == $categoria->getId()) {
+                                    $class = "btn-white text-warning";
+                                    $id_cat = "?q=$q";
+                                }
+                            }
                 ?>
                 
                 <a class="col-auto btn m-1 <?php echo $class; ?>" onclick="" href="index.php<?php echo $id_cat;?>">
                     <?php echo $categoria->getNome();?>
                 </a>
-                <?php } ?>
+                <?php }
+                    }?>
             </div>
             <?php
             
@@ -149,7 +151,7 @@ if (!$_SESSION['logado']) {
                 else {
                     foreach($produtos as $produto) {
             ?>
-            <div onclick="location.replace('produto.php?id=<?php echo $produto->getId(); ?>)" class="card container produto m-1">
+            <div onclick="location.replace('produto.php?id=<?php echo $produto->getId(); ?>')" class="card container produto m-1">
                 <div class="imagem">
                     <img class="objectImage" src="<?php echo $produto->getImagemUrl(); ?>">
                 </div>

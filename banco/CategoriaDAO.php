@@ -12,8 +12,8 @@ class CategoriaDAO {
     
     function selectAll() {
         $select = "SELECT * FROM categorias ORDER BY nome";
-        
         $result = $this->conexao->query($select);
+        $categorias = null;
         
         while($row = mysqli_fetch_assoc($result)) {
             $categorias[] = new Categoria($row['id'], $row['nome']);

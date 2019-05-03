@@ -39,13 +39,20 @@ CREATE TABLE produto_do_carrinho (
     FOREIGN KEY (id_produto) REFERENCES produtos(id)
 );
 
+CREATE TABLE pedido (
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    data_compra DATE,
+    status VARCHAR(90),
+    id_cliente INT,
+    FOREIGN KEY (id_cliente) REFERENCES usuarios(id)
+);
+
 CREATE TABLE produto_comprado (
     id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     quantidade INT,
-    data_compra DATE,
-    id_cliente INT,
+    id_pedido INT,
     id_produto INT,
-    FOREIGN KEY (id_cliente) REFERENCES usuarios(id),
+    FOREIGN KEY (id_pedido) REFERENCES pedido(id),
     FOREIGN KEY (id_produto) REFERENCES produtos(id)
 );
 

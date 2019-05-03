@@ -79,7 +79,7 @@ if (!$_SESSION['logado'] || !$_SESSION['is_admin']) {
                         }
                         foreach ($categorias as $categoria) { ?>
                             <option value="<?php echo $categoria->getId(); ?>">
-                                <?php echo $categoria->getId(); ?>
+                                <?php echo $categoria->getNome(); ?>
                             </option>
                     <?php } ?>
                 </select>

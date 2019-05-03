@@ -12,7 +12,7 @@ class ProdutoDAO {
     
     function selectAll() {
         $select = "SELECT * FROM PRODUTOS ORDER BY nome";
-        
+        $produtos = null;
         $result = $this->conexao->query($select);
         while($row = mysqli_fetch_assoc($result)) {
             $produtos[] = new Produto($row['id'], $row['nome'], $row['descricao'],
@@ -90,7 +90,6 @@ class ProdutoDAO {
             .$produto->getPreco()."', '".$produto->getQuantidade()."', '"
             .$produto->getIdCategoria()."', '".$produto->getIdAdm()."')";
         
-        echo $insert;
         return $this->conexao->query($insert);
     }
 }
